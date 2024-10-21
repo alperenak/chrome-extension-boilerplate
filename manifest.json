@@ -1,0 +1,22 @@
+{
+  "name": "Extension App",
+  "description": "",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "src/extensions/popup/index.html",
+    "default_title": "Open Extension App"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/extensions/contentScripts/index.tsx"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/extensions/background/background.ts",
+    "type": "module"
+  },
+  "options_page": "src/extensions/options/index.html",
+  "permissions": ["background", "contextMenus", "bookmarks", "tabs", "storage", "history"]
+}

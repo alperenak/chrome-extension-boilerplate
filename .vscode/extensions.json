@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "markis.code-coverage",
+    "clinyong.vscode-css-modules",
+    "andrewleedham.vscode-css-modules",
+    "vunguyentuan.vscode-css-variables",
+    "alexkrechik.cucumberautocomplete",
+    "dbaeumer.vscode-eslint",
+    "firsttris.vscode-jest-runner",
+    "unifiedjs.vscode-mdx",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "yoavbls.pretty-ts-errors",
+    "figma.figma-vscode-extension"
+  ]
+}
