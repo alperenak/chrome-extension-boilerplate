@@ -1,0 +1,2 @@
+pnpm prepush
+./.husky/lint-branch

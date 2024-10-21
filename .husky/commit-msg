@@ -1,0 +1,4 @@
+echo ""
+echo Check https://github.com/conventional-changelog/commitlint for better commit messages
+echo ""
+npx --no -- commitlint --edit ${1}

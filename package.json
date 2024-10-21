@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint:fix": "eslint . --fix && prettier --check --write .",
+    "prepush": "pnpm lint:fix",
     "preview": "vite preview",
-    "build:watch": "tsc -b && vite build --watch"
+    "build:watch": "tsc -b && vite build --watch",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -16,6 +18,8 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@crxjs/vite-plugin": "2.0.0-beta.23",
     "@eslint/js": "^9.11.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
