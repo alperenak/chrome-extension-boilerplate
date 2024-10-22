@@ -24,7 +24,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
 # jobs:
 #   lint_check:
 #     runs-on: ubuntu-latest
