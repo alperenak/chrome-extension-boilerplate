@@ -1,0 +1,11 @@
+# dependabot config
+
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    ignore:
+      - dependency-name: '@storybook*'
+      - dependency-name: '@types*'
