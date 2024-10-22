@@ -1,9 +1,11 @@
+name: CI - Install, Lint, and Security Check
+
 on:
   - push
   - pull_request
 
 jobs:
-  cache-and-install:
+  install-lint-security:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,85 +26,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-# jobs:
-#   lint_check:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
 
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '20'
-#           cache: 'pnpm'
+      - name: Run lint check and fix
+        run: pnpm run lint:fix
 
-#       - name: Cache node_modules
-#         uses: actions/cache@v4
-#         with:
-#           path: node_modules
-#           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-node_modules-
-
-#       - name: Install dependencies
-#         run: pnpm install
-
-#       - name: Run lint check and attempt fix
-#         run: pnpm run lint:fix
-
-#       - name: Verify lint check
-#         run: |
-#           git diff --exit-code || (echo "Lint errors found" && exit 1)
-
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '20'
-#           cache: 'pnpm'
-
-#       - name: Cache node_modules
-#         uses: actions/cache@v4
-#         with:
-#           path: node_modules
-#           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-node_modules-
-
-#       - name: Install dependencies
-#         run: pnpm install
-
-#       - name: Run build
-#         run: pnpm run build
-
-#   security_check:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '20'
-#           cache: 'pnpm'
-
-#       - name: Cache node_modules
-#         uses: actions/cache@v4
-#         with:
-#           path: node_modules
-#           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-node_modules-
-
-#       - name: Install dependencies
-#         run: pnpm install
-
-#       - name: Run security check
-#         run: pnpm audit --audit-level=moderate
+      - name: Run security audit
+        run: pnpm audit --audit-level=moderate
