@@ -1,11 +1,11 @@
-name: CI - Install, Lint, and Security Check
+name: Complete CI Workflow - Install, Lint, Security, and Build
 
 on:
-  - push
-  - pull_request
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
-  install-lint-security:
+  install-lint-security-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +32,6 @@ jobs:
 
       - name: Run security audit
         run: pnpm audit --audit-level=high
+
+      - name: Run Build
+        run: pnpm run build
